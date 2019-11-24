@@ -28,11 +28,13 @@
         $before_one_day = $current_date - (24 * 60 * 60);
         $before_one_week = $current_date - (7 * 24 * 60 * 60);
 
-        $sql = "SELECT name, recorded_at, COUNT(name) AS value_occurence FROM names WHERE recorded_at >= $before_one_day GROUP BY name ORDER BY value_occurence DESC LIMIT 5";
+        $sql = "SELECT name, recorded_at, COUNT(name) AS value_occurence FROM names 
+        WHERE recorded_at >= $before_one_day GROUP BY name ORDER BY value_occurence DESC LIMIT 5";
         $result = mysqli_query($conn, $sql);
         $day_list = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-        $sql = "SELECT name, recorded_at, COUNT(name) AS value_occurence FROM names WHERE recorded_at >= $before_one_week GROUP BY name ORDER BY value_occurence DESC LIMIT 5";
+        $sql = "SELECT name, recorded_at, COUNT(name) AS value_occurence FROM names 
+        WHERE recorded_at >= $before_one_week GROUP BY name ORDER BY value_occurence DESC LIMIT 5";
         $result = mysqli_query($conn, $sql);
         $week_list = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
